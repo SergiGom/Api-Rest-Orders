@@ -16,14 +16,14 @@ app.use(cors()); // Habilitar CORS
 app.use(express.json()); // Parsear JSON en el body de las requests
 
 // Rutas
-app.use('/orders', ordersRoutes);
+app.use('/api/v1/orders', ordersRoutes);
 
 // Ruta raíz para verificar que la API funciona
 app.get('/', (req, res) => {
-    res.json({ message: 'API de Órdenes funcionando correctamente' });
+  res.json({ message: 'API de Órdenes funcionando correctamente' });
 });
 
 // Iniciar el servidor
 app.listen(PORT, () => {
-    console.log(`Servidor corriendo en http://localhost:${PORT}`);
+  console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });

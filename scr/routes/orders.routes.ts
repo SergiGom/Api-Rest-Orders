@@ -1,13 +1,30 @@
 // Rutas para las órdenes
 import { Router } from 'express';
-import { getAllOrdersController, getOrderByIdController } from '../controllers/orders.Controller';
+import {
+  getAllOrdersController,
+  getOrderByIdController,
+  createOrderController,
+  replaceOrderController,
+  patchOrderController,
+  deleteOrderController,
+  getOrderItemsController,
+  addOrderItemController,
+  patchOrderItemController,
+  deleteOrderItemController,
+} from '../controllers/orders.Controller';
 
 const router = Router();
 
-// Ruta para obtener todas las órdenes: GET /orders
 router.get('/', getAllOrdersController);
-
-// Ruta para obtener una orden por ID: GET /orders/:id
 router.get('/:id', getOrderByIdController);
+router.post('/', createOrderController);
+router.put('/:id', replaceOrderController);
+router.patch('/:id', patchOrderController);
+router.delete('/:id', deleteOrderController);
+
+router.get('/:orderId/items', getOrderItemsController);
+router.post('/:orderId/items', addOrderItemController);
+router.patch('/:orderId/items/:itemId', patchOrderItemController);
+router.delete('/:orderId/items/:itemId', deleteOrderItemController);
 
 export default router;
